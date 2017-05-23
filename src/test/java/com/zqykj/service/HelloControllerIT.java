@@ -54,7 +54,7 @@ public class HelloControllerIT {
     public void getDatasource() throws SQLException {
         DruidPooledConnection connection = dataSource.getConnection();
         System.out.println("connection=" + connection);
-        String sql = "select * from insight_source_host";
+        String sql = "SELECT * FROM insight_source_host";
         PreparedStatement pst = connection.prepareStatement(sql);
         ResultSet resultSet = pst.executeQuery();
         while (resultSet.next()) {
@@ -67,17 +67,6 @@ public class HelloControllerIT {
 
     @Test
     public void getMyDatasource() throws SQLException {
-        DruidPooledConnection connection = new DataSource().getInstance().getConnection();
-        System.out.println("connection=" + connection);
-        String sql = "select * from insight_source_host";
-        PreparedStatement pst = connection.prepareStatement(sql);
-        ResultSet resultSet = pst.executeQuery();
-        while (resultSet.next()) {
-            String c2 = resultSet.getString(2);
-            int c1 = resultSet.getInt(1);
-            System.out.println(c1 + ", " + c2);
-        }
-        //assertThat(resultSet.next(), equalTo(true));
     }
 
 
